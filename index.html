@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D Projections Visualizer</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #101010;
+            color: #50FF50;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #container {
+            position: relative;
+        }
+        canvas {
+            border: 1px solid #333;
+            display: block;
+        }
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(16, 16, 16, 0.85);
+            padding: 12px;
+            border: 1px solid #50FF50;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-width: 260px;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        label {
+            font-size: 12px;
+        }
+        button {
+            background: #101010;
+            color: #50FF50;
+            border: 1px solid #50FF50;
+            padding: 6px;
+            cursor: pointer;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #50FF50;
+            color: #101010;
+        }
+        input[type=range] {
+            accent-color: #50FF50;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <canvas id="game"></canvas>
+    <div id="ui">
+        <div><strong>3D Projection Controls</strong></div>
+        
+        <div class="control-group">
+            <label>Projection Mode:</label>
+            <button id="btnMode">Mode: PERSPECTIVE</button>
+        </div>
+
+        <div class="control-group">
+            <label>Camera Z Distance: <span id="valZ">1.5</span></label>
+            <input type="range" id="sliderZ" min="0.5" max="4.0" step="0.1" value="1.5">
+        </div>
+
+        <div class="control-group" id="obliqueControls" style="display:none;">
+            <label>Oblique Angle Direction (l, m):</label>
+            <label>l: <span id="valL">0.5</span></label>
+            <input type="range" id="sliderL" min="-1.0" max="1.0" step="0.05" value="0.5">
+            <label>m: <span id="valM">0.5</span></label>
+            <input type="range" id="sliderM" min="-1.0" max="1.0" step="0.05" value="0.5">
+        </div>
+
+        <div class="control-group">
+            <label>Rotation Speed: <span id="valSpeed">1.0</span>x</label>
+            <input type="range" id="sliderSpeed" min="0" max="3" step="0.1" value="1.0">
+        </div>
+
+        <div class="control-group">
+            <label>Auto-Rotate:</label>
+            <button id="btnPause">Pause / Resume</button>
+        </div>
+    </div>
+</div>
+
+<script src="penger.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
